@@ -42,15 +42,16 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'Terraform - Creating Infrastructure'
+name: Terraform AWS Workflow
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-
-permissions:
-  contents: read
+  workflow_dispatch:
+    # Inputs the workflow expects.
+    inputs:
+      tfpath:
+        description: 'TF File Path'     
+        required: false
+        default: 'salazro/vpc_bastion_terraform'
 
 jobs:
   tf_code_check:
