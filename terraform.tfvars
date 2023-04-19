@@ -1,4 +1,4 @@
-accesskey    = "enter_accesskey"
+accesskey    = "AKIAY47YJXJHB3F5VHFN"
 secretkey    = "enter_secretkey"
 mykeypair    = "Mykey"
 az           = ["us-east-1a", "us-east-1b", "us-east-1c"]
