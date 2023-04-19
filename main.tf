@@ -109,7 +109,7 @@ resource "aws_instance" "myec2" {
   vpc_security_group_ids = [aws_security_group.bastion.id]
   key_name               = var.mykeypair
   tags = {
-    Name = "A4L-BASTION-GITACTION TEST"
+    Name = "A4L-BASTION-GITACTIONS TEST1"
   }
 }
 
