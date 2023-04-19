@@ -1,6 +1,6 @@
 accesskey    = "AKIAY47YJXJHB3F5VHFN"
-secretkey    = "enter_secretkey"
-mykeypair    = "Mykey"
+secretkey    = "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"
+mykeypair    = "AWSkey"
 az           = ["us-east-1a", "us-east-1b", "us-east-1c"]
 cidrA        = ["10.16.0.0/20", "10.16.16.0/20", "10.16.32.0/20", "10.16.48.0/20"]
 cidrB        = ["10.16.64.0/20", "10.16.80.0/20", "10.16.96.0/20", "10.16.112.0/20"]
