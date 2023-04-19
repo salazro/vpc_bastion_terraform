@@ -79,7 +79,7 @@ jobs:
       run: terraform init
       env:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY}}
-        aws-secret-access-key: ${{ secret.AWS_SECRET_ACCESS_KEY}}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         
 
     # Checks that all Terraform configuration files adhere to a canonical format
@@ -87,7 +87,7 @@ jobs:
       run: terraform fmt -check
       env:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY}}
-        aws-secret-access-key: ${{ secret.AWS_SECRET_ACCESS_KEY}}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
 
     # Generates an execution plan for Terraform
     #- name: Terraform Plan
