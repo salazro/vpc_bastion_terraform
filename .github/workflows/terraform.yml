@@ -61,7 +61,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
     defaults:
       run:
-        working-directory: src
+        working-directory: main
         
     steps:
       - name: Checkout
