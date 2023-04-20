@@ -2,7 +2,7 @@
 provider "aws" {
   region     = "us-east-1"
   access_key = local.db_access.access_key
-  secret_key = local.db_secret.secret_key
+  secret_key = local.db_access.secret_key
 }
 
 data "aws_secretsmanager_secret" "secrets" {
@@ -15,11 +15,7 @@ data "aws_secretsmanager_secret_version" "current" {
 }
 
 locals {
-  db_access = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["access_key"]
-}
-
-locals {
-  db_secret = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["secret_key"]
+  db_access = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)
 }
 
 resource "aws_vpc" "vpc1" {
