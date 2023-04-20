@@ -2,7 +2,8 @@
 provider "aws" {
   region     = "us-east-1"
   access_key = local.db_creds.access_key
-  secret_key = local.db_creds.secret_key
+  secret_key = local.db_creds.secret_key.
+  depends_on    = [aws_secretsmanager_secret_version.credential]
 }
 
 
