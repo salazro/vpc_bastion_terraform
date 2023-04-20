@@ -1,17 +1,18 @@
 ## Configure the AWS Provider
 provider "aws" {
   region     = "us-east-1"
-  access_key = ""
-  secret_key = ""
+  access_key = local.db_creds.access_key
+  secret_key = local.db_creds.secret_key
 }
 
-data "aws_secretsmanager_secret_version" "creds" {
-  secret_id = "githubactions"
+
+data "aws_secretsmanager_secret" "credential" {
+  name = "github_actions"
 }
 
 locals {
   db_creds = jsondecode (
-    data.aws_secretsmanager_secret_version.creds.secret_string
+    data.aws_secretsmanager_secret.credential.secret_string
   )
 }
 
