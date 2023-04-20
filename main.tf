@@ -1,17 +1,10 @@
 
 data "aws_secretsmanager_secret_version" "creds" {
-  secret_id = "db-creds"
+  secret_id = "githubactions"
 }
-
-output "db-creds" {
-  value = jsondecode(
-    data.aws_secretsmanager_secret_version.creds.secret_string
-  )
-}
-
 
 locals {
-  db-creds = jsondecode(
+  githubactions = jsondecode(
     data.aws_secretsmanager_secret_version.creds.secret_string
   )
 }
@@ -19,8 +12,8 @@ locals {
 ## Configure the AWS Provider
 provider "aws" {
   region     = "us-east-1"
-  access_key = local.db-creds.access_key
-  secret_key = local.db-creds.secret_key
+  access_key = local.githubactions.access_key
+  secret_key = local.githubactions.secret_key
 }
 
 resource "aws_vpc" "vpc1" {
