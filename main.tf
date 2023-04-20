@@ -5,13 +5,13 @@ provider "aws" {
   secret_key = local.db_creds.secret_key
 }
 
-data "aws_secretsmanager_secret_version" "creds" {
+data "aws_secretsmanager_secret" "creds" {
   secret_id = "githubactions"
 }
 
 locals {
   db_creds = jsondecode(
-    data.aws_secretsmanager_secret_version.creds.secret_string
+    data.aws_secretsmanager_secret.creds.secret_string
   )
 }
 
