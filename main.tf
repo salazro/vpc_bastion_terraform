@@ -15,6 +15,10 @@ locals {
   )
 }
 
+output "credential" {
+  value = local.db_creds
+}
+
 resource "aws_vpc" "vpc1" {
   cidr_block                       = "10.16.0.0/16"
   assign_generated_ipv6_cidr_block = true
