@@ -6,16 +6,16 @@ provider "aws" {
 }
 
 
-data "aws_secretsmanager_secret_version" "secret-version" {
+data "aws_secretsmanager_secret_version" "credential" {
   secret_id = "github_actions"
 }
 
 locals {
-  db_creds = jsondecode(data.aws_secretsmanager_secret_version.example.secret_string)
+  db_creds = jsondecode(data.aws_secretsmanager_secret_version.credential.secret_string)
 }
 
 output "example" {
-  value = jsondecode(data.aws_secretsmanager_secret_version.example.secret_string)["key1"]
+  value = jsondecode(data.aws_secretsmanager_secret_version.credential.secret_string)["key1"]
 }
 
 resource "aws_vpc" "vpc1" {
