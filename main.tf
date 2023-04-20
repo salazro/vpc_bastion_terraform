@@ -9,8 +9,8 @@ data "aws_secretsmanager_secret_version" "creds" {
   secret_id = "db-creds"
 }
 
-local {
-  db_creds = jsondecode(
+locals {
+  db-creds = jsondecode(
     data.aws_secretsmanager_secret_version.creds.secret_string
   )
 }
