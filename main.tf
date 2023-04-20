@@ -1,26 +1,16 @@
 ## Configure the AWS Provider
 provider "aws" {
   region     = "us-east-1"
-  #access_key = local.db_access.access_key
-  #secret_key = local.db_access.secret_key
-}
-
-data "aws_secretsmanager_secret" "secrets" {
-  arn = "arn:aws:secretsmanager:us-east-1:612016699982:secret:github_actions-GuEf2m"
+  access_key = local.db_access.access_key
+  secret_key = local.db_access.secret_key
 }
 
 data "aws_secretsmanager_secret_version" "current" {
-  secret_id = data.aws_secretsmanager_secret.secrets.id
+  secret_id = "github_actions"
 }
 
 locals {
   db_access = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)
-}
-
-provider "aws" {
-  region     = "us-east-1"
-  access_key = local.db_access.access_key
-  secret_key = local.db_access.secret_key
 }
 
 resource "aws_vpc" "vpc1" {
