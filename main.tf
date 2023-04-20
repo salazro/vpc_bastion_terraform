@@ -6,9 +6,10 @@ provider "aws" {
 }
 
 data "aws_secretsmanager_secret_version" "creds" {
-  secret_id= "githubactions"}
+  secret_id= "githubactions"
+}
 
-locals {
+local {
   db_creds = jsondecode (
     data.aws_secretsmanager_secret_version.creds.secret_string)}
 
