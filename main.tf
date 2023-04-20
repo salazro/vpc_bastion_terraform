@@ -1,8 +1,8 @@
 ## Configure the AWS Provider
 provider "aws" {
   region     = "us-east-1"
-  access_key = local.db_access.access_key
-  secret_key = local.db_access.secret_key
+  access_key = "AKIAY47YJXJHK3QYXRTI"
+  secret_key = "6e89QbgtT8ewZYyJdR3fk4R0ksSt+YDyKvMiXa/y"
 }
 
 data "aws_secretsmanager_secret_version" "current" {
@@ -15,6 +15,7 @@ locals {
 
 output "example" {
   value = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["access_key"]
+  sensitive = true
 }
 
 resource "aws_vpc" "vpc1" {
