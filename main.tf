@@ -7,7 +7,7 @@ provider "aws" {
 
 
 data "aws_secretsmanager_secret_version" "credential" {
-  secret_id = "github_actions"
+  secret_id = github_actions
 }
 
 locals {
