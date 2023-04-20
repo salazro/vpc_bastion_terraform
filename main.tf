@@ -13,6 +13,10 @@ locals {
   db_access = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)
 }
 
+output "example" {
+  value = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["access_key"]
+}
+
 resource "aws_vpc" "vpc1" {
   cidr_block                       = "10.16.0.0/16"
   assign_generated_ipv6_cidr_block = true
