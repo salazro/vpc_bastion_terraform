@@ -6,14 +6,11 @@ provider "aws" {
 }
 
 data "aws_secretsmanager_secret_version" "creds" {
-  secret_id= "githubactions"
-}
+  secret_id= "githubactions"}
 
 locals {
   db_creds = jsondecode (
-    data.aws_secretsmanager_secret_version.creds.secret_string
-   )
-}
+    data.aws_secretsmanager_secret_version.creds.secret_string)}
 
 resource "aws_vpc" "vpc1" {
   cidr_block                       = "10.16.0.0/16"
