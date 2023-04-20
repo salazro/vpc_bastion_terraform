@@ -5,6 +5,16 @@ provider "aws" {
   secret_key = local.db_creds.secret_key
 }
 
+data "aws_secretsmanager_secret_version" "creds" {
+  secret_id = "db-creds"
+}
+
+locals {
+  db_creds = jsondecode (
+    data.aws_secretsmanager_secret_version.creds.secret_string
+  )
+}
+
 resource "aws_vpc" "vpc1" {
   cidr_block                       = "10.16.0.0/16"
   assign_generated_ipv6_cidr_block = true
