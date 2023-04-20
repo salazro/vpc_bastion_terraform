@@ -1,14 +1,3 @@
-data "aws_secretsmanager_secret_version" "creds" {
-  secret_id= "githubactions"
-}
-
-locals {
-  db_creds = jsondecode(
-    data.aws_secretsmanager_secret_version.creds.secret_string
-    )
-}
-
-
 ## Configure the AWS Provider
 provider "aws" {
   region     = "us-east-1"
