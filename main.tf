@@ -3,6 +3,13 @@ data "aws_secretsmanager_secret_version" "creds" {
   secret_id = "db-creds"
 }
 
+output "db-creds" {
+  value = jsondecode(
+    data.aws_secretsmanager_secret_version.creds.secret_string
+  )
+}
+
+
 locals {
   db-creds = jsondecode(
     data.aws_secretsmanager_secret_version.creds.secret_string
