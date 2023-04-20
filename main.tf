@@ -2,17 +2,20 @@
 provider "aws" {
   region     = "us-east-1"
   access_key = local.db_creds.access_key
-  secret_key = local.db_creds.secret_key.
-  depends_on    = [aws_secretsmanager_secret_version.credential]
+  secret_key = local.db_creds.secret_key
+}
+
+data "aws_secretsmanager_secret" "secrets" {
+  arn = "arn:aws:secretsmanager:us-east-1:612016699982:secret:github_actions-GuEf2m"
 }
 
 
-data "aws_secretsmanager_secret_version" "credential" {
-  secret_id = github_actions
+data "aws_secretsmanager_secret_version" "current" {
+  secret_id = data.aws_secretsmanager_secret.secrets.id
 }
 
 locals {
-  db_creds = jsondecode(data.aws_secretsmanager_secret_version.credential.secret_string)
+  db_creds = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)
 }
 
 resource "aws_vpc" "vpc1" {
