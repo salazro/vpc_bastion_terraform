@@ -1,6 +1,6 @@
 ## Configure the AWS Provider
 provider "aws" {
-  region     = "us-east-1"
+  region = "us-east-1"
   #access_key = local.db_access.access_key
   #secret_key = local.db_access.secret_key
 }
@@ -14,7 +14,7 @@ locals {
 }
 
 output "example" {
-  value = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["access_key"]
+  value     = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)["access_key"]
   sensitive = true
 }
 
