@@ -1,8 +1,8 @@
 ## Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1"
-  access_key = local.db_access.access_key
-  secret_key = local.db_access.secret_key
+  region     = "us-east-1"
+  #access_key = local.db_access.access_key
+  #secret_key = local.db_access.secret_key
 }
 
 data "aws_secretsmanager_secret_version" "current" {
@@ -14,12 +14,12 @@ locals {
 }
 
 output "accesskey" {
-  value     = local.db_access.access_key
+  value = local.db_access.access_key
   #sensitive = true
 }
 
 output "secretkey" {
-  value     = local.db_access.secret_key
+  value = local.db_access.secret_key
   #sensitive = true
 }
 
