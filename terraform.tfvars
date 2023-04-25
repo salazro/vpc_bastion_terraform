@@ -1,5 +1,3 @@
-accesskey    = ""
-secretkey    = ""
 mykeypair    = "AWSkey"
 az           = ["us-east-1a", "us-east-1b", "us-east-1c"]
 cidrA        = ["10.16.0.0/20", "10.16.16.0/20", "10.16.32.0/20", "10.16.48.0/20"]

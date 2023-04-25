@@ -1,28 +1,3 @@
-## Configure the AWS Provider
-provider "aws" {
-  region     = "us-east-1"
-  #access_key = local.db_access.access_key
-  #secret_key = local.db_access.secret_key
-}
-
-data "aws_secretsmanager_secret_version" "current" {
-  secret_id = "github_actions"
-}
-
-locals {
-  db_access = jsondecode(data.aws_secretsmanager_secret_version.current.secret_string)
-}
-
-output "accesskey" {
-  value = local.db_access.access_key
-  #sensitive = true
-}
-
-output "secretkey" {
-  value = local.db_access.secret_key
-  #sensitive = true
-}
-
 resource "aws_vpc" "vpc1" {
   cidr_block                       = "10.16.0.0/16"
   assign_generated_ipv6_cidr_block = true

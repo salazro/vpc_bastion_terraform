@@ -1,7 +1,3 @@
-variable "accesskey" { type = string }
-
-variable "secretkey" { type = string }
-
 variable "mykeypair" { type = string }
 
 # Availability Zone Variable List
